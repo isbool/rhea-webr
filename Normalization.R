@@ -27,8 +27,9 @@ labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
 
 download_file <- function(file_path) {
   if (file.exists(file_path)) {
-    # Read the file in binary mode
     file_data <- readBin(file_path, "raw", file.info(file_path)$size)
+    cat("Downloading file:", file_path, "\n")
+    cat("Data size:", length(file_data), "bytes\n")
     return(list(name = basename(file_path), data = file_data, type = "application/octet-stream"))
   } else {
     stop("File does not exist: ", file_path)
