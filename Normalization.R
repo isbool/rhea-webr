@@ -101,6 +101,13 @@ norm_otu_table_tax <- cbind(norm_otu_table,taxonomy)
 # Re-insert the taxonomy information in relative abundance table
 rel_otu_table_tax <- cbind(rel_otu_table,taxonomy)
 
+# Debugging: Check the contents of the tables
+print(head(norm_otu_table))
+print(head(rel_otu_table))
+print("Summaries of processed tables:")
+print(summary(norm_otu_table))
+print(summary(rel_otu_table))
+
 ################################################################################
 # Generate a two-sided pdf with a rarefaction curve for all samples and a curve
 pdf(file = "RarefactionCurve.pdf")
