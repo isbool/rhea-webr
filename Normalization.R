@@ -40,13 +40,12 @@ tryCatch({
 ###################       Read all required input files      ####################
 
 # Load the tab-delimited file containing the values to be be checked (rownames in the first column)
-otu_table <-  read.table (file_name,
-                          check.names = FALSE,
-                          header = TRUE,
-                          dec = ".",
-                          sep = "\t",
-                          row.names = 1,
-                          comment.char = "")
+otu_table <- read.table(file_name, check.names = FALSE, header = TRUE, dec = ".", sep = "\t", row.names = 1, comment.char = "")
+if (dim(otu_table)[1] == 0) {
+    stop("OTU table is empty or not properly formatted.")
+} else {
+    print(sprintf("OTU table loaded with %d rows and %d columns.", nrow(otu_table), ncol(otu_table)))
+}
 
 # Making sure tha taxonomy column gets lower-case
 col_names <- colnames(otu_table)
