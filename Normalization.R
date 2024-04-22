@@ -1,4 +1,3 @@
-setwd("/data/r-scripts") 
 
 #' Please give the file name of the original OTU-table with taxonomic classification
 file_name <- "OTUs-Table.tab"                   #<--- CHANGE ACCORDINGLY
