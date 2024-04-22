@@ -169,25 +169,35 @@ dev.off()
 ######                        Write Output Files                           ######
 #################################################################################
 
-# Write the normalized table in a file and copy in directories alpha-diversity and beta-diversity if existing
-write.table(norm_otu_table, "OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE)
-suppressWarnings (try(write.table(norm_otu_table, "../2.Alpha-Diversity/OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
-suppressWarnings (try(write.table(norm_otu_table, "../3.Beta-Diversity/OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
+# # Write the normalized table in a file and copy in directories alpha-diversity and beta-diversity if existing
+# write.table(norm_otu_table, "OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE)
+# suppressWarnings (try(write.table(norm_otu_table, "../2.Alpha-Diversity/OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
+# suppressWarnings (try(write.table(norm_otu_table, "../3.Beta-Diversity/OTUs_Table-norm.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
 
-# Write the normalized table with taxonomy in a file
-write.table(norm_otu_table_tax, "OTUs_Table-norm-tax.tab", sep = "\t",col.names = NA, quote = FALSE)
+# # Write the normalized table with taxonomy in a file
+# write.table(norm_otu_table_tax, "OTUs_Table-norm-tax.tab", sep = "\t",col.names = NA, quote = FALSE)
 
-# Write the normalized relative abundance table in a file and copy in directory Serial-Group-Comparisons if existing
-write.table(rel_otu_table, "OTUs_Table-norm-rel.tab", sep = "\t",col.names = NA, quote = FALSE)
-suppressWarnings (try(write.table(rel_otu_table, "../5.Serial-Group-Comparisons/OTUs_Table-norm-rel.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
+# # Write the normalized relative abundance table in a file and copy in directory Serial-Group-Comparisons if existing
+# write.table(rel_otu_table, "OTUs_Table-norm-rel.tab", sep = "\t",col.names = NA, quote = FALSE)
+# suppressWarnings (try(write.table(rel_otu_table, "../5.Serial-Group-Comparisons/OTUs_Table-norm-rel.tab", sep = "\t",col.names = NA, quote = FALSE), silent =TRUE))
 
-# Write the normalized relative abundance with taxonomy table in a file and copy in directory Taxonomic-Binning if existing
-write.table(rel_otu_table_tax, "OTUs_Table-norm-rel-tax.tab", sep ="\t",col.names = NA, quote = FALSE)
-suppressWarnings (try(write.table(rel_otu_table_tax, "../4.Taxonomic-Binning/OTUs_Table-norm-rel-tax.tab", sep ="\t",col.names = NA, quote = FALSE), silent =TRUE))
+# # Write the normalized relative abundance with taxonomy table in a file and copy in directory Taxonomic-Binning if existing
+# write.table(rel_otu_table_tax, "OTUs_Table-norm-rel-tax.tab", sep ="\t",col.names = NA, quote = FALSE)
+# suppressWarnings (try(write.table(rel_otu_table_tax, "../4.Taxonomic-Binning/OTUs_Table-norm-rel-tax.tab", sep ="\t",col.names = NA, quote = FALSE), silent =TRUE))
 
-# Write the rarefaction table
-write.table(curvedf, "RarefactionCurve.tab", sep ="\t", quote = FALSE, row.names = FALSE)
+# # Write the rarefaction table
+# write.table(curvedf, "RarefactionCurve.tab", sep ="\t", quote = FALSE, row.names = FALSE)
+               
+# Prepare data for return
+results <- list(
+    norm_otu_table = norm_otu_table,
+    rel_otu_table = rel_otu_table,
+    norm_otu_table_tax = cbind(norm_otu_table, taxonomy = otu_table$taxonomy),
+    rel_otu_table_tax = cbind(rel_otu_table, taxonomy = otu_table$taxonomy)
+)
 
+# Return the data to JavaScript
+return(results)
 
 #################################################################################
 ######                           End of Script                             ######
