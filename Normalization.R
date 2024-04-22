@@ -25,6 +25,16 @@ labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
 ######                             Main Script                              ######
 ##################################################################################
 
+download_file <- function(file_path) {
+  if (file.exists(file_path)) {
+    # Read the file in binary mode
+    file_data <- readBin(file_path, "raw", file.info(file_path)$size)
+    return(list(name = basename(file_path), data = file_data, type = "application/octet-stream"))
+  } else {
+    stop("File does not exist: ", file_path)
+  }
+}
+
 ###################       Load all required libraries     ########################
 
 # Attempt to install and load the 'vegan' package
