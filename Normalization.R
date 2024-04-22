@@ -188,16 +188,19 @@ dev.off()
 # # Write the rarefaction table
 # write.table(curvedf, "RarefactionCurve.tab", sep ="\t", quote = FALSE, row.names = FALSE)
                
-# Prepare data for return
+# Prepare the data as a list to return to JavaScript
 results <- list(
     norm_otu_table = norm_otu_table,
     rel_otu_table = rel_otu_table,
-    norm_otu_table_tax = cbind(norm_otu_table, taxonomy = otu_table$taxonomy),
-    rel_otu_table_tax = cbind(rel_otu_table, taxonomy = otu_table$taxonomy)
+    norm_otu_table_tax = norm_otu_table_tax,
+    rel_otu_table_tax = rel_otu_table_tax,
+    curvedf = curvedf,
+    rarefactionCurve = as.data.frame(t(rarefactionCurve))  # Convert matrices or other complex structures to data frames
 )
 
 # Return the data to JavaScript
 return(results)
+
 
 #################################################################################
 ######                           End of Script                             ######
