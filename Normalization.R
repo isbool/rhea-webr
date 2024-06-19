@@ -1,23 +1,23 @@
-setwd("/tmp")
+#setwd("/tmp")
 #' Please give the file name of the original OTU-table with taxonomic classification
-file_name <- "OTUs-Table.tab"                   #<--- CHANGE ACCORDINGLY
+#file_name <- "OTUs-Table.tab"                   #<--- CHANGE ACCORDINGLY
 
 #' Please select the normalisation method
 #' 0 = No random subsampling, no rounding
 #' 1 = Random subsampling with rounding
-method <- 0                                   #<--- CHANGE ACCORDINGLY
+#method <- 0                                   #<--- CHANGE ACCORDINGLY
 
 #' Pease select the normalization level used
 #' 0 = Minimum sampling size
 #' 1 = Fixed value (e.g. 1000)
-level <- 0                                    #<--- CHANGE ACCORDINGLY
+#level <- 0                                    #<--- CHANGE ACCORDINGLY
 
 #' Please choose the value at which all samples will be normalized. (Only used if level selected is 1)
-normCutoff <- 1000
+#normCutoff <- 1000
 
 #' Please choose the number of samples with the steepest rarefaction curves to be selectively plotted
 #' The default number of samples presented separately is 5
-labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
+#labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
 
 ######                  NO CHANGES ARE NEEDED BELOW THIS LINE               ######
 
