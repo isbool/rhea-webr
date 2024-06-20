@@ -1,30 +1,40 @@
-setwd("/data/r-scripts") 
-
+#setwd("/tmp")
 #' Please give the file name of the original OTU-table with taxonomic classification
-file_name <- "OTUs-Table.tab"                   #<--- CHANGE ACCORDINGLY
+#file_name <- "OTUs-Table.tab"                   #<--- CHANGE ACCORDINGLY
 
 #' Please select the normalisation method
 #' 0 = No random subsampling, no rounding
 #' 1 = Random subsampling with rounding
-method <- 0                                   #<--- CHANGE ACCORDINGLY
+#method <- 0                                   #<--- CHANGE ACCORDINGLY
 
 #' Pease select the normalization level used
 #' 0 = Minimum sampling size
 #' 1 = Fixed value (e.g. 1000)
-level <- 0                                    #<--- CHANGE ACCORDINGLY
+#level <- 0                                    #<--- CHANGE ACCORDINGLY
 
 #' Please choose the value at which all samples will be normalized. (Only used if level selected is 1)
-normCutoff <- 1000
+#normCutoff <- 1000
 
 #' Please choose the number of samples with the steepest rarefaction curves to be selectively plotted
 #' The default number of samples presented separately is 5
-labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
+#labelCutoff <- 5                              #<--- CHANGE ACCORDINGLY
 
 ######                  NO CHANGES ARE NEEDED BELOW THIS LINE               ######
 
 ##################################################################################
 ######                             Main Script                              ######
 ##################################################################################
+
+download_file <- function(file_path) {
+  if (file.exists(file_path)) {
+    file_data <- readBin(file_path, "raw", file.info(file_path)$size)
+    cat("Downloading file:", file_path, "\n")
+    cat("Data size:", length(file_data), "bytes\n")
+    return(list(name = basename(file_path), data = file_data, type = "application/octet-stream"))
+  } else {
+    stop("File does not exist: ", file_path)
+  }
+}
 
 ###################       Load all required libraries     ########################
 
@@ -41,13 +51,12 @@ tryCatch({
 ###################       Read all required input files      ####################
 
 # Load the tab-delimited file containing the values to be be checked (rownames in the first column)
-otu_table <-  read.table (file_name,
-                          check.names = FALSE,
-                          header = TRUE,
-                          dec = ".",
-                          sep = "\t",
-                          row.names = 1,
-                          comment.char = "")
+otu_table <- read.table(file_name, check.names = FALSE, header = TRUE, dec = ".", sep = "\t", row.names = 1, comment.char = "")
+if (dim(otu_table)[1] == 0) {
+    stop("OTU table is empty or not properly formatted.")
+} else {
+    print(sprintf("OTU table loaded with %d rows and %d columns.", nrow(otu_table), ncol(otu_table)))
+}
 
 # Making sure tha taxonomy column gets lower-case
 col_names <- colnames(otu_table)
@@ -102,6 +111,13 @@ norm_otu_table_tax <- cbind(norm_otu_table,taxonomy)
 
 # Re-insert the taxonomy information in relative abundance table
 rel_otu_table_tax <- cbind(rel_otu_table,taxonomy)
+
+# Debugging: Check the contents of the tables
+print(head(norm_otu_table))
+print(head(rel_otu_table))
+print("Summaries of processed tables:")
+print(summary(norm_otu_table))
+print(summary(rel_otu_table))
 
 ################################################################################
 # Generate a two-sided pdf with a rarefaction curve for all samples and a curve
@@ -182,14 +198,6 @@ suppressWarnings (try(write.table(rel_otu_table_tax, "../4.Taxonomic-Binning/OTU
 
 # Write the rarefaction table
 write.table(curvedf, "RarefactionCurve.tab", sep ="\t", quote = FALSE, row.names = FALSE)
-
-
-# Error message
-if(!flag) { stop("
-                 It was not possible to install all required R libraries properly.
-                 Please check the installation of all required libraries manually.\n
-                 Required libaries: GUniFrac")
-}
 
 #################################################################################
 ######                           End of Script                             ######
