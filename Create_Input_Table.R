@@ -5,8 +5,7 @@
 ###################       Load all required libraries     ########################
 
 # Check if required packages are already installed, and install if missing
-webr::install("compare")
-library(compare)
+# need to load package compare but im mounting it
 ###################            Read input table              ####################
 
 # Reading Alpha diversity file
