@@ -4,8 +4,23 @@
 
 ###################       Load all required libraries     ########################
 
-# Check if required packages are already installed, and install if missing
-# need to load package compare but im mounting it
+check_and_load <- function(package_name) {
+  if (!package_name %in% rownames(installed.packages())) {
+    cat(sprintf("The library '%s' is not installed.\n", package_name))
+    # Optionally, you could install the package here if it is not found
+  } else {
+    tryCatch({
+      library(package_name, character.only = TRUE)
+      cat(sprintf("The library '%s' has been loaded successfully.\n", package_name))
+    }, error = function(e) {
+      cat(sprintf("Failed to load the library '%s': %s\n", package_name, e$message))
+    })
+  }
+}
+
+# Example usage
+check_and_load("compare")
+
 ###################            Read input table              ####################
 
 # Reading Alpha diversity file
