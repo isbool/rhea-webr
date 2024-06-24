@@ -1,19 +1,3 @@
-
-
-#' Please give the name of the file with alpha-diversity measures
-alpha <- "alpha-diversity.tab";                         #<--- CHANGE ACCORDINGLY
-
-#' Please give the name of the file with OTUs relative abundance
-RelativeAbundanceOTUs <- "OTUs_Table-norm-rel.tab";     #<--- CHANGE ACCORDINGLY
-
-#' Please give the name of the file with relative abundances of different taxonomic levels
-TaxanomyAll <- "tax.summary.all.tab";                   #<--- CHANGE ACCORDINGLY
-
-#' Please give the name of the meta file with sample groups and additional metadata variables if available
-MetaFile <- "mapping_file.tab";                         #<--- CHANGE ACCORDINGLY
-
-######                  NO CHANGES ARE NEEDED BELOW THIS LINE               ######
-
 ##################################################################################
 ######                             Main Script                              ######
 ##################################################################################
@@ -22,7 +6,6 @@ MetaFile <- "mapping_file.tab";                         #<--- CHANGE ACCORDINGLY
 
 # Check if required packages are already installed, and install if missing
 webr::install("compare")
-
 
 ###################            Read input table              ####################
 
