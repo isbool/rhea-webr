@@ -6,7 +6,6 @@
 
 # Check if required packages are already installed, and install if missing
 webr::install("compare")
-
 ###################            Read input table              ####################
 
 # Reading Alpha diversity file
