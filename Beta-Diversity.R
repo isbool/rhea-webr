@@ -4,6 +4,20 @@
 
 ###################       Load all required libraries     ########################
 
+  library(ade4)
+  library(vegan)
+  library(GUniFrac)
+  library(ape)
+  library(statmod)
+  library(matrixStats)
+  library(inline)
+  library(foreach)
+  library(ggplot2)
+  library(fBasics)
+  library(statip)
+  library(cluster)
+  library(clusterSim)
+  library(phangorn)
 
 # Define a list of packages to install and their respective repositories
 tryCatch({
@@ -26,22 +40,22 @@ tryCatch({
   #install.packages('clusterSim', repos = c('https://a-dudek-ue.r-universe.dev', 'https://repo.r-wasm.org'))
   #install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
 
-  library(ade4)
-  library(vegan)
+  # library(ade4)
+  # library(vegan)
 
-  library(GUniFrac)
-  library(ape)
-  library(statmod)
-  library(matrixStats)
-  library(inline)
-  library(foreach)
-  library(ggplot2)
-  library(fBasics)
-  library(statip)
+  # library(GUniFrac)
+  # library(ape)
+  # library(statmod)
+  # library(matrixStats)
+  # library(inline)
+  # library(foreach)
+  # library(ggplot2)
+  # library(fBasics)
+  # library(statip)
 
-  library(cluster)
-  library(clusterSim)
-  library(phangorn)
+  # library(cluster)
+  # library(clusterSim)
+  # library(phangorn)
 
 }, error = function(e) {
   # Catch and print any errors that occur during installation or loading
