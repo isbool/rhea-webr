@@ -5,14 +5,14 @@
 ###################       Load all required libraries     ########################
 
 # Attempt to install and load the 'vegan' package
-library(vegan)
-# tryCatch({
-#     webr::shim_install()
-#     webr::install("vegan")
-#     library("vegan")
-# }, error = function(e) {
-#     cat("An error occurred:", e$message, "\n")
-# })
+
+tryCatch({
+    # webr::shim_install()
+    # webr::install("vegan")
+    library("vegan")
+}, error = function(e) {
+    cat("An error occurred:", e$message, "\n")
+})
 
 ###################       Read all required input files      ####################
 
