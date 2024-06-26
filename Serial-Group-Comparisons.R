@@ -3,20 +3,29 @@
 ##################################################################################
 
 ###################       Load all required libraries     ########################
-tryCatch({
-	webr::shim_install()
-	webr::install("plotrix")
-	webr::install("PerformanceAnalytics")
-	webr::install("reshape")
-	webr::install("ggplot2")
-	webr::install("gridExtra")
-	webr::install("gtable")
-	webr::install("Matrix")
-	webr::install("cowplot")
-}, error = function(e) {
-  # Catch and print any errors that occur during installation or loading
-  cat("An error occurred:", e$message, "\n")
-})
+# tryCatch({
+# 	webr::shim_install()
+# 	webr::install("plotrix")
+# 	webr::install("PerformanceAnalytics")
+# 	webr::install("reshape")
+# 	webr::install("ggplot2")
+# 	webr::install("gridExtra")
+# 	webr::install("gtable")
+# 	webr::install("Matrix")
+# 	webr::install("cowplot")
+# }, error = function(e) {
+#   # Catch and print any errors that occur during installation or loading
+#   cat("An error occurred:", e$message, "\n")
+# })
+
+library(plotrix)
+library(PerformanceAnalytics)
+library(reshape)
+library(ggplot2)
+library(gridExtra)
+library(gtable)
+library(Matrix)
+library(cowplot)
 
 #####################################################################################################################
 ####                                        Functions to be used  in main Script.                            ########
