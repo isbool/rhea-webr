@@ -5,7 +5,7 @@
 ###################       Load all required libraries     ########################
 
 # Attempt to install and load the 'vegan' package
-
+library(vegan)
 # tryCatch({
 #     webr::shim_install()
 #     webr::install("vegan")
