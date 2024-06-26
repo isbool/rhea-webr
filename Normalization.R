@@ -2,28 +2,17 @@
 ######                             Main Script                              ######
 ##################################################################################
 
-download_file <- function(file_path) {
-  if (file.exists(file_path)) {
-    file_data <- readBin(file_path, "raw", file.info(file_path)$size)
-    cat("Downloading file:", file_path, "\n")
-    cat("Data size:", length(file_data), "bytes\n")
-    return(list(name = basename(file_path), data = file_data, type = "application/octet-stream"))
-  } else {
-    stop("File does not exist: ", file_path)
-  }
-}
-
 ###################       Load all required libraries     ########################
 
 # Attempt to install and load the 'vegan' package
-tryCatch({
-    webr::shim_install()
-    webr::install("vegan")
-    library("vegan")
-}, error = function(e) {
-    cat("An error occurred:", e$message, "\n")
-})
 
+# tryCatch({
+#     webr::shim_install()
+#     webr::install("vegan")
+#     library("vegan")
+# }, error = function(e) {
+#     cat("An error occurred:", e$message, "\n")
+# })
 
 ###################       Read all required input files      ####################
 
