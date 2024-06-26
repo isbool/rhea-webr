@@ -3,7 +3,7 @@
 ##################################################################################
 
 ###################       Load all required libraries     ########################
-  install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
+  #install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
 
   library(ade4)
   library(vegan)
