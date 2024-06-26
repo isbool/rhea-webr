@@ -7,33 +7,30 @@
 
 # Define a list of packages to install and their respective repositories
 tryCatch({
-  webr::shim_install()
-
-  install.packages('ade4', repos = c('https://adeverse.r-universe.dev', 'https://repo.r-wasm.org'))
-  library(ade4)
-  
-  install.packages('vegan', repos = c('https://vegandevs.r-universe.dev', 'https://repo.r-wasm.org'))
-  library(vegan)
+  #webr::shim_install()
+  #install.packages('ade4', repos = c('https://adeverse.r-universe.dev', 'https://repo.r-wasm.org'))
+  #install.packages('vegan', repos = c('https://vegandevs.r-universe.dev', 'https://repo.r-wasm.org'))
 
   # To install GUniFrac (modfied) requies mounted image with the modifed GUniFrac & modifed modeest + ggrepel(?)
   # install.packages('GUniFrac', repos = 'https://repo.r-wasm.org')
-  webr::install("ape")
-  webr::install("statmod")
-  webr::install("matrixStats")
-  webr::install("inline")
-  webr::install("foreach")
-  webr::install("ggplot2")
-  webr::install("fBasics")
-  webr::install("statip")
+  # webr::install("ape")
+  # webr::install("statmod")
+  # webr::install("matrixStats")
+  # webr::install("inline")
+  # webr::install("foreach")
+  # webr::install("ggplot2")
+  # webr::install("fBasics")
+  # webr::install("statip")
+  
+  #install.packages('cluster', repos = c('https://mmaechler.r-universe.dev', 'https://repo.r-wasm.org'))
+  #install.packages('clusterSim', repos = c('https://a-dudek-ue.r-universe.dev', 'https://repo.r-wasm.org'))
+  #install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
+
+  library(ade4)
+  library(vegan)
   library(GUniFrac)
-
-  install.packages('cluster', repos = c('https://mmaechler.r-universe.dev', 'https://repo.r-wasm.org'))
   library(cluster)
-
-  install.packages('clusterSim', repos = c('https://a-dudek-ue.r-universe.dev', 'https://repo.r-wasm.org'))
   library(clusterSim)
-
-  install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
   library(phangorn)
 
 }, error = function(e) {
