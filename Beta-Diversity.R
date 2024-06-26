@@ -27,6 +27,9 @@ tryCatch({
   #install.packages('phangorn', repos = c('https://isbool.r-universe.dev', 'https://repo.r-wasm.org'))
 
   library(ade4)
+  library(vegan)
+
+  library(GUniFrac)
   library(ape)
   library(statmod)
   library(matrixStats)
@@ -35,8 +38,7 @@ tryCatch({
   library(ggplot2)
   library(fBasics)
   library(statip)
-  library(vegan)
-  library(GUniFrac)
+
   library(cluster)
   library(clusterSim)
   library(phangorn)
