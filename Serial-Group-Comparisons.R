@@ -26,6 +26,7 @@ library(gridExtra)
 library(gtable)
 library(Matrix)
 library(cowplot)
+library(ggpubr) ## to replace the textGrob which doesnt exist any more
 
 #####################################################################################################################
 ####                                        Functions to be used  in main Script.                            ########
@@ -506,7 +507,8 @@ for (i in dependant_variables_start:dim(input_table)[2])
        texttable[[x]] <- tableGrob(pre_table,theme = mytheme)
        
        # Define the title of the tables
-       title <- textGrob("Prevalence table",gp = gpar(fontsize = 7))
+       # title <- textGrob("Prevalence table",gp = gpar(fontsize = 7))
+       title <- text_grob("Prevalence table", size = 7, color = "black") ## added
        padding <- unit(3,"mm")
        texttable[[x]] <- gtable_add_rows(texttable[[x]], heights = grobHeight(title) + padding, pos = 0)
        texttable[[x]] <- gtable_add_grob(texttable[[x]], title, 1, 1, 1, ncol(texttable[[x]]))
@@ -523,7 +525,8 @@ for (i in dependant_variables_start:dim(input_table)[2])
          
          # Pavlue table for significant pairs
          fpvaltable[[x]] <- tableGrob(signif_fpairs[2:4],rows = NULL,theme = mytheme)
-         title <- textGrob("Fisher's Exact Test - pairwise",gp = gpar(fontsize = 9))
+         # title <- textGrob("Fisher's Exact Test - pairwise",gp = gpar(fontsize = 9))
+         title <- text_grob("Fisher's Exact Test - pairwise", size = 9, color = "black") ## added
          padding <- unit(3,"mm")
          fpvaltable[[x]] <- gtable_add_rows(fpvaltable[[x]], heights = grobHeight(title) + padding,pos = 0)
          fpvaltable[[x]] <- gtable_add_grob(fpvaltable[[x]], title, 1, 1, 1, ncol(fpvaltable[[x]]))
@@ -552,13 +555,15 @@ for (i in dependant_variables_start:dim(input_table)[2])
            pvaltable[[x]] <-tableGrob(signif_pairs[2:4],rows = NULL,theme = mytheme)
            
            # Title of tables in the PDF
-           title <- textGrob("Wilcoxon Rank Sum Test - pairwise",gp = gpar(fontsize = 9))
+           # title <- textGrob("Wilcoxon Rank Sum Test - pairwise",gp = gpar(fontsize = 9))
+           title <- text_grob("Wilcoxon Rank Sum Test - pairwise", size = 9, color = "black") ## added
            padding <- unit(2,"mm")
            pvaltable[[x]] <- gtable_add_rows(pvaltable[[x]], heights = grobHeight(title) + padding,pos = 0)
            pvaltable[[x]] <- gtable_add_grob(pvaltable[[x]], title, 1, 1, 1, ncol(pvaltable[[x]]))
          colnames(signif_all) <-c(" ","p-value","Adj. p-value")
          pvaltableAll[[x]] <- tableGrob(signif_all,rows = NULL,theme = mytheme)
-         title <- textGrob("Kruskal-Wallis Rank Sum Test - all groups ",gp = gpar(fontsize = 9))
+         # title <- textGrob("Kruskal-Wallis Rank Sum Test - all groups ",gp = gpar(fontsize = 9))
+         title <- text_grob("Kruskal-Wallis Rank Sum Test - all groups ", size = 9, color = "black") ## added
          padding <- unit(2,"mm")
          pvaltableAll[[x]] <- gtable_add_rows(pvaltableAll[[x]], heights = grobHeight(title) + padding,pos = 0)
          pvaltableAll[[x]] <- gtable_add_grob(pvaltableAll[[x]], title, 1, 1, 1, ncol(pvaltableAll[[x]]))
@@ -594,7 +599,8 @@ for (i in 1:length(fpvaltable)){
   if (!is.null(fpvaltable[[i]]) || !is.null(allfpvaltable[[i]])){
     colnames(sig_Fdf) <-c(" ","p-value","Adj. p-value")
     allfpvaltable[[i]] <- list()
-    title_all <- textGrob("Fisher's Exact Test - all groups",gp = gpar(fontsize = 9))
+    # title_all <- textGrob("Fisher's Exact Test - all groups",gp = gpar(fontsize = 9))
+    title_all <- text_grob("Fisher's Exact Test - all groups", size = 9, color = "black") ## added
     padding <- unit(3,"mm")
     allfpvaltable[[i]] <- tableGrob(sig_Fdf[counter,],rows = NULL,theme = mytheme)
     allfpvaltable[[i]] <- gtable_add_rows(allfpvaltable[[i]], heights = grobHeight(title_all) + padding,pos = 0)
