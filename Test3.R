@@ -1,3 +1,12 @@
+library(plotrix)
+library(PerformanceAnalytics)
+library(reshape)
+library(ggplot2)
+library(gridExtra)
+library(gtable)
+library(Matrix)
+library(cowplot)
+library(ggpubr)
 #####################################################################################################################
 ####                                        Functions to be used  in main Script.                            ########
 #####################################################################################################################
